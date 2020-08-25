@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Dashboad from './Dashboard';
+import Dashboad from './Pages/Dashboard';
 
 import GlobalStyles from './styles/GlobalStyles';
 
