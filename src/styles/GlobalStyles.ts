@@ -11,6 +11,10 @@ export default createGlobalStyle`
     height:100%;
   }
 
+  html{
+    font-size: 62.5%;
+  }
+
   *, button, input{
     border:0;
     outline:0;
