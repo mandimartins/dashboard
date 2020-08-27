@@ -7,7 +7,8 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  align-items: center;
+  padding: 0 1.5rem;
 
   border-bottom: 0.1rem solid ${(props) => props.theme.colors.grey};
 `;
