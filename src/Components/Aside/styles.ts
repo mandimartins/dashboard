@@ -19,6 +19,7 @@ export const LogoImg = styled.img`
 `;
 
 export const Title = styled.header`
+  font-size: 1.6rem;
   color: ${(props) => props.theme.colors.white};
   margin-left: 1rem;
 `;

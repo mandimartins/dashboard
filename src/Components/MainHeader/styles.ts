@@ -14,6 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Profile = styled.div`
+  font-size: 1.6rem;
   color: ${(props) => props.theme.colors.white};
 `;
 
