@@ -10,7 +10,6 @@ export const ToggleLable = styled.span`
   font-size: 1.4rem;
   color: ${(props) => props.theme.colors.white};
 `;
-
 export const ToggleSelector = styled(Switch).attrs<ReactSwitchProps>(
   ({ theme }) => ({
     onColor: theme.colors.info,
