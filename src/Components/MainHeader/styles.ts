@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   grid-area: MH;
@@ -9,8 +9,6 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1.5rem;
-
-  border-bottom: 0.1rem solid ${(props) => props.theme.colors.grey};
 `;
 
 export const Profile = styled.div`

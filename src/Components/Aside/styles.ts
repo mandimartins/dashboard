@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   grid-area: AS;
   background-color: ${(props) => props.theme.colors.secondary};
   padding-left: 2rem;
-  border-right: 0.1rem solid ${(props) => props.theme.colors.grey};
 `;
 
 export const Header = styled.header`

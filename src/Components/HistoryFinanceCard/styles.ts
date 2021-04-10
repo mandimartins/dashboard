@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface ITagProps {
   color: string;
@@ -31,11 +31,16 @@ export const Container = styled.li`
     justify-content: space-between;
     padding-left: 1rem;
   }
+
+  > div span {
+    font-weight: 500;
+    font-size: 1.8rem;
+  }
 `;
 
 export const Tag = styled.div<ITagProps>`
   width: 1rem;
-  height: 2.8rem;
+  height: 2.9rem;
   background-color: ${(props) => props.color};
 
   position: absolute;
