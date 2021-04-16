@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div``;
 export const Content = styled.div``;
@@ -17,6 +17,7 @@ export const Filters = styled.div`
     margin: 0 1rem;
 
     transition: opacity 0.3s;
+    opacity: 0.5;
 
     &:hover {
       opacity: 0.7;
@@ -24,18 +25,22 @@ export const Filters = styled.div`
   }
 
   .tag-filter-recurrent::after {
-    content: '';
+    content: "";
+    display: block;
+    width: 5.5rem;
+    margin: 0 auto;
+    border-bottom: 1rem solid ${(props) => props.theme.colors.success};
+  }
+
+  .tag-filter-eventual::after {
+    content: "";
     display: block;
     width: 5.5rem;
     margin: 0 auto;
     border-bottom: 1rem solid ${(props) => props.theme.colors.warning};
   }
 
-  .tag-filter-eventual::after {
-    content: '';
-    display: block;
-    width: 5.5rem;
-    margin: 0 auto;
-    border-bottom: 1rem solid ${(props) => props.theme.colors.success};
+  .tag-activated {
+    opacity: 1;
   }
 `;
