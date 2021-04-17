@@ -27,7 +27,7 @@ interface IData {
   descriptioin: string;
   amountFormatted: string;
   frequency: string;
-  dataFormatted: string;
+  dateFormatted: string;
   tagColor: string;
 }
 
@@ -121,7 +121,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         descriptioin: item.description,
         amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
-        dataFormatted: formatDate(item.date),
+        dateFormatted: formatDate(item.date),
         tagColor: item.frequency === "recorrente" ? "#61dbfb" : "#FB6161",
       };
     });
@@ -171,7 +171,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             key={item.id}
             tagColor={item.tagColor}
             title={item.descriptioin}
-            subtitle={item.dataFormatted}
+            subtitle={item.dateFormatted}
             amount={item.amountFormatted}
           />
         ))}
