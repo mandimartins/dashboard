@@ -33,12 +33,12 @@ interface IData {
 
 const List: React.FC<IRouteParams> = ({ match }) => {
   const [data, setData] = useState<IData[]>([]);
-  const [monthSelected, setMonthSelected] = useState<string>(
-    String(new Date().getMonth() + 1)
+  const [monthSelected, setMonthSelected] = useState<number>(
+    new Date().getMonth() + 1
   );
 
-  const [yearSelected, setYearSelected] = useState<string>(
-    String(new Date().getFullYear())
+  const [yearSelected, setYearSelected] = useState<number>(
+    new Date().getFullYear()
   );
 
   const [frequencyFilterSelected, setFrequencyFilterSelected] = useState<
@@ -105,12 +105,30 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     }
   };
 
+  const handleMonthSelected = (month: string) => {
+    try {
+      const parseMonth = Number(month);
+      setMonthSelected(parseMonth);
+    } catch (error) {
+      throw new Error("Invalid month value. Is accepted 0 - 24. ");
+    }
+  };
+
+  const handleYearSelected = (month: string) => {
+    try {
+      const parseYear = Number(month);
+      setMonthSelected(parseYear);
+    } catch (error) {
+      throw new Error("Invalid month value. Is accepted 0 - 24. ");
+    }
+  };
+
   useEffect(() => {
     const { data } = pageData;
     const filteredDate = data.filter((item) => {
       const date = new Date(item.date);
-      const month = String(date.getMonth() + 1);
-      const year = String(date.getFullYear());
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
 
       return (
         month === monthSelected &&
@@ -143,12 +161,12 @@ const List: React.FC<IRouteParams> = ({ match }) => {
       <ContentHeader title={pageData.title} lineColor={pageData.lineColor}>
         <SelectInput
           options={months}
-          onChange={(e) => setMonthSelected(e.target.value)}
+          onChange={(e) => handleMonthSelected(e.target.value)}
           defaultValue={monthSelected}
         />
         <SelectInput
           options={years}
-          onChange={(e) => setYearSelected(e.target.value)}
+          onChange={(e) => handleYearSelected(e.target.value)}
           defaultValue={yearSelected}
         />
       </ContentHeader>
