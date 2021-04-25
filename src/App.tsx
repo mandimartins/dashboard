@@ -10,7 +10,7 @@ import Routes from "./routes";
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={dark}>
+    <ThemeProvider theme={light}>
       <GlobalStyles />
       <Routes />
     </ThemeProvider>

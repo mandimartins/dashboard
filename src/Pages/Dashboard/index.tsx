@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 
 import happyImg from "../../assets/happy.svg";
+import sadImg from "../../assets/sad.svg";
 
 import ContentHeader from "../../Components/ContentHeader";
 import SelectInput from "../../Components/SelectInput";
@@ -111,6 +112,32 @@ const Dashboard: React.FC = () => {
     return totalGains - totalExpenses;
   }, [totalExpenses, totalGains]);
 
+  const message = useMemo(() => {
+    if (totalBalance < 0) {
+      return {
+        title: "Que triste!",
+        description: "Neste mês, você gastou mais do que deveria.",
+        footerText:
+          "Verifique seus gastos e tente cortar algumas coisas desnecessárias.",
+        icon: sadImg,
+      };
+    } else if (totalBalance === 0) {
+      return {
+        title: "Ufaa!",
+        description: "Neste mês, você gastou exatamente o que ganhou.",
+        footerText: "Tenha cuidado. No próximo mês tente poupar.",
+        icon: happyImg,
+      };
+    } else {
+      return {
+        title: "Muito bem!",
+        description: "Sua carteira está positiva.",
+        footerText: "Continue assim. Considere investir o seu saldo.",
+        icon: happyImg,
+      };
+    }
+  }, [totalBalance]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -150,14 +177,14 @@ const Dashboard: React.FC = () => {
           amount={totalBalance}
           footerLabel="atualizado com base nas entradas"
           icon="dolar"
-          color="#00e676"
+          color="#FBEC61"
         />
         <WalletBox
           title="entradas"
           amount={totalGains}
           footerLabel="atualizado com base nas entradas"
           icon="arrowUp"
-          color="#61dbfb"
+          color="#00e676"
         />
         <WalletBox
           title="saídas"
@@ -167,10 +194,10 @@ const Dashboard: React.FC = () => {
           color="#FB6161"
         />
         <MessageBox
-          icon={happyImg}
-          title="Muito Bem!"
-          description="Sua carteira está  positiva."
-          footerText="Continue assim. Considere investir o seu saldo."
+          icon={message.icon}
+          title={message.title}
+          description={message.description}
+          footerText={message.footerText}
         />
       </Content>
     </Container>
