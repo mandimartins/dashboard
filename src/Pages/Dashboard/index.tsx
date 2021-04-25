@@ -67,6 +67,50 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
+  const totalExpenses = useMemo(() => {
+    let total: number = 0;
+
+    expenses.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount);
+        } catch {
+          throw new Error("Invalid amount!  Amount must be number.");
+        }
+      }
+    });
+
+    return total;
+  }, [yearSelected, monthSelected]);
+
+  const totalGains = useMemo(() => {
+    let total: number = 0;
+
+    gains.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount);
+        } catch {
+          throw new Error("Invalid amount!  Amount must be number.");
+        }
+      }
+    });
+
+    return total;
+  }, [yearSelected, monthSelected]);
+
+  const totalBalance = useMemo(() => {
+    return totalGains - totalExpenses;
+  }, [totalExpenses, totalGains]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -79,7 +123,7 @@ const Dashboard: React.FC = () => {
   const handleYearSelected = (month: string) => {
     try {
       const parseYear = Number(month);
-      setMonthSelected(parseYear);
+      setYearSelected(parseYear);
     } catch (error) {
       throw new Error("Invalid month value. Is accepted 0 - 24. ");
     }
@@ -103,21 +147,21 @@ const Dashboard: React.FC = () => {
       <Content>
         <WalletBox
           title="saldo"
-          amount={150.0}
+          amount={totalBalance}
           footerLabel="atualizado com base nas entradas"
           icon="dolar"
           color="#00e676"
         />
         <WalletBox
           title="entradas"
-          amount={150.0}
+          amount={totalGains}
           footerLabel="atualizado com base nas entradas"
           icon="arrowUp"
           color="#61dbfb"
         />
         <WalletBox
           title="saídas"
-          amount={150.0}
+          amount={totalExpenses}
           footerLabel="atualizado com base nas entradas"
           icon="arrowDown"
           color="#FB6161"
