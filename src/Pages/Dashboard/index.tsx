@@ -2,13 +2,14 @@ import React, { useState, useMemo } from "react";
 
 import ContentHeader from "../../Components/ContentHeader";
 import SelectInput from "../../Components/SelectInput";
+import WalletBox from "../../Components/WalletBox";
 
 import expenses from "../../repositories/expenses";
 import gains from "../../repositories/gains";
 
 import listOfMonths from "../../utils/months";
 
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 
 const Dashboard: React.FC = () => {
   const [monthSelected, setMonthSelected] = useState<number>(
@@ -95,6 +96,30 @@ const Dashboard: React.FC = () => {
           defaultValue={yearSelected}
         />
       </ContentHeader>
+
+      <Content>
+        <WalletBox
+          title="saldo"
+          amount={150.0}
+          footerLabel="atualizado com base nas entradas"
+          icon="dolar"
+          color="#00e676"
+        />
+        <WalletBox
+          title="entradas"
+          amount={150.0}
+          footerLabel="atualizado com base nas entradas"
+          icon="arrowUp"
+          color="#61dbfb"
+        />
+        <WalletBox
+          title="saídas"
+          amount={150.0}
+          footerLabel="atualizado com base nas entradas"
+          icon="arrowDown"
+          color="#FB6161"
+        />
+      </Content>
     </Container>
   );
 };
