@@ -114,12 +114,12 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     }
   };
 
-  const handleYearSelected = (month: string) => {
+  const handleYearSelected = (year: string) => {
     try {
-      const parseYear = Number(month);
-      setMonthSelected(parseYear);
+      const parseYear = Number(year);
+      setYearSelected(parseYear);
     } catch (error) {
-      throw new Error("Invalid month value. Is accepted 0 - 24. ");
+      throw new Error("Invalid year value.");
     }
   };
 
